@@ -47,13 +47,7 @@ export function Navbar() {
           onClick={() => setOpen(false)}
           className="inline-flex items-center"
         >
-          <Image
-            src="/epos-solutions-final-transparent.png"
-            alt="Epos Solutions"
-            width={140}
-            height={95}
-            priority
-          />
+          <Image src="/es-favicon.png" alt="Epos Solutions" width={40} height={40} />
         </Link>
 
         <nav className="hidden items-center gap-10 md:flex">
