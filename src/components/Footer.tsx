@@ -9,6 +9,7 @@ const NAV = [
 const LEGAL = [
   { href: "/impressum", label: "Impressum" },
   { href: "/datenschutz", label: "Datenschutz" },
+  { href: "/agb", label: "AGB" },
 ];
 
 export function Footer() {
