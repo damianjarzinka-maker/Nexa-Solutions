@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/cn";
 
@@ -40,7 +41,7 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <a
+        <Link
           href="/"
           aria-label="Nexa Solutions"
           onClick={() => setOpen(false)}
@@ -53,24 +54,24 @@ export function Navbar() {
             height={50}
             priority
           />
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-10 md:flex">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm text-muted transition-colors hover:text-white"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
-          <a
+          <Link
             href="/#kontakt"
             className="inline-flex items-center border border-white bg-white px-5 py-2 text-sm font-medium text-bg transition-colors hover:bg-transparent hover:text-white"
           >
             Anfrage starten
-          </a>
+          </Link>
         </nav>
 
         <button
@@ -92,22 +93,22 @@ export function Navbar() {
       >
         <div className="flex flex-col px-6 py-6">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
               className="border-b border-line py-4 font-serif text-2xl tracking-tight"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
-          <a
+          <Link
             href="/#kontakt"
             onClick={() => setOpen(false)}
             className="mt-6 inline-flex items-center justify-center border border-white bg-white px-5 py-3 text-sm font-medium text-bg"
           >
             Anfrage starten
-          </a>
+          </Link>
         </div>
       </div>
     </header>
