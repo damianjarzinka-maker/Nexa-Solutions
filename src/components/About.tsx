@@ -32,7 +32,7 @@ export function About() {
               </h2>
               <div className="mt-8 space-y-5 text-muted">
                 <p>
-                  Nexa Solutions ist eine digitale Agentur für Webdesign,
+                  Epos Solutions ist eine digitale Agentur für Webdesign,
                   KI-Automatisierung und IT-Consulting. Wir arbeiten mit kleinen
                   und mittleren Unternehmen, Restaurants und Personenmarken in
                   ganz Deutschland.

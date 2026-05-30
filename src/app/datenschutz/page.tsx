@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LegalLayout } from "@/components/LegalLayout";
 
 export const metadata: Metadata = {
-  title: "Datenschutzerklärung — Nexa Solutions",
+  title: "Datenschutzerklärung — Epos Solutions",
 };
 
 export default function DatenschutzPage() {

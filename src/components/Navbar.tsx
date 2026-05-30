@@ -43,15 +43,15 @@ export function Navbar() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
         <Link
           href="/"
-          aria-label="Nexa Solutions"
+          aria-label="Epos Solutions"
           onClick={() => setOpen(false)}
           className="inline-flex items-center"
         >
           <Image
-            src="/nexa-logo-beige-transparent.png"
-            alt="Nexa Solutions"
-            width={130}
-            height={50}
+            src="/epos-solutions-final-transparent.png"
+            alt="Epos Solutions"
+            width={140}
+            height={95}
             priority
           />
         </Link>

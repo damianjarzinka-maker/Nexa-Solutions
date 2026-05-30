@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/cn";
 
-interface MinimalistHeroNexaProps {
+interface MinimalistHeroEposProps {
   logoText: string;
   navLinks: { label: string; href: string }[];
   mainText: string;
@@ -54,7 +54,7 @@ const SocialIcon = ({
   </a>
 );
 
-export const MinimalistHeroNexa = ({
+export const MinimalistHeroEpos = ({
   logoText,
   navLinks,
   mainText,
@@ -64,7 +64,7 @@ export const MinimalistHeroNexa = ({
   socialLinks,
   locationText,
   className,
-}: MinimalistHeroNexaProps) => {
+}: MinimalistHeroEposProps) => {
   return (
     <div
       className={cn(
@@ -147,7 +147,7 @@ export const MinimalistHeroNexa = ({
           >
             <Image
               src="/nexa-logo-beige-transparent.png"
-              alt="Nexa Solutions"
+              alt="Epos Solutions"
               width={520}
               height={200}
               priority

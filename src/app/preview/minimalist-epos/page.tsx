@@ -1,9 +1,9 @@
 "use client";
 
 import { Linkedin, Instagram, Mail } from "lucide-react";
-import { MinimalistHeroNexa } from "@/components/ui/minimalist-hero-nexa";
+import { MinimalistHeroEpos } from "@/components/ui/minimalist-hero-epos";
 
-export default function MinimalistHeroNexaPreviewPage() {
+export default function MinimalistHeroEposPreviewPage() {
   const navLinks = [
     { label: "Leistungen", href: "#" },
     { label: "Über uns", href: "#" },
@@ -16,12 +16,12 @@ export default function MinimalistHeroNexaPreviewPage() {
       href: "https://www.linkedin.com/in/damian-jarzinka-7a7a7b348/",
     },
     { icon: Instagram, href: "#" },
-    { icon: Mail, href: "mailto:hallo@nexa-solutions.de" },
+    { icon: Mail, href: "mailto:hallo@epos-solutions.de" },
   ];
 
   return (
-    <MinimalistHeroNexa
-      logoText="NEXA"
+    <MinimalistHeroEpos
+      logoText="EPOS"
       navLinks={navLinks}
       mainText="Studio für Webdesign, KI-Automatisierung und IT-Consulting. Digitale Systeme, die Ihr Geschäft tragen — vom Restaurant bis zur Personenmarke."
       readMoreLabel="Mehr erfahren"

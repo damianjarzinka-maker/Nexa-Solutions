@@ -18,10 +18,10 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
           <div>
             <Image
-              src="/nexa-logo-beige-transparent.png"
-              alt="Nexa Solutions"
-              width={110}
-              height={42}
+              src="/epos-solutions-final-transparent.png"
+              alt="Epos Solutions"
+              width={120}
+              height={80}
             />
             <p className="mt-4 max-w-xs text-sm text-muted">
               Studio für Webdesign, KI-Automatisierung und IT-Consulting —
@@ -66,7 +66,7 @@ export function Footer() {
 
         <div className="mt-16 grid grid-cols-1 items-center gap-4 border-t border-line pt-8 text-xs text-muted md:grid-cols-3">
           <span className="md:justify-self-start">
-            © 2026 Nexa Solutions. Alle Rechte vorbehalten.
+            © 2026 Epos Solutions. Alle Rechte vorbehalten.
           </span>
           <a
             href="https://www.linkedin.com/in/damian-jarzinka-7a7a7b348/"

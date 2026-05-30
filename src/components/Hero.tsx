@@ -117,7 +117,7 @@ export function Hero() {
           >
             <Image
               src="/nexa-logo-beige-transparent.png"
-              alt="Nexa Solutions"
+              alt="Epos Solutions"
               width={520}
               height={200}
               priority

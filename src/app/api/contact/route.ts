@@ -38,7 +38,7 @@ export async function POST(req: Request) {
 
     const html = `
       <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111;">
-        <h2 style="margin: 0 0 16px;">Neue Anfrage über nexa-solutions.de</h2>
+        <h2 style="margin: 0 0 16px;">Neue Anfrage über epos-solutions.de</h2>
         <table style="border-collapse: collapse; width: 100%; max-width: 560px;">
           <tr>
             <td style="padding: 8px 12px; border: 1px solid #e5e5e5; font-weight: bold; background: #fafafa; width: 140px;">Name</td>
@@ -68,7 +68,7 @@ export async function POST(req: Request) {
       from: "onboarding@resend.dev",
       to: "damian.jarzinka@gmail.com",
       replyTo: email,
-      subject: `Neue Anfrage von ${name} – Nexa Solutions`,
+      subject: `Neue Anfrage von ${name} – Epos Solutions`,
       html,
     });
 

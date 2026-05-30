@@ -10,8 +10,8 @@ export function Statement() {
       <div className="mx-auto flex max-w-4xl items-center justify-center px-6 py-32 md:py-40">
         <div className="mx-auto text-4xl font-normal text-muted">
           Build
-          <FlipWords words={WORDS} /> <br />
-          websites with Nexa Solutions
+          <FlipWords words={WORDS} duration={2000} /> <br />
+          websites with Epos Solutions
         </div>
       </div>
     </section>

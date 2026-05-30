@@ -25,19 +25,20 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Nexa Solutions — Webdesign, KI-Automatisierung, IT-Consulting",
+  title: "Epos Solutions — Webdesign & KI-Automatisierung",
   description:
-    "Studio für Webdesign, KI-Automatisierung und IT-Consulting. Präzise digitale Systeme für Unternehmen in ganz Deutschland.",
+    "Epos Solutions entwickelt professionelle Websites, KI-Automatisierungen und digitale Infrastruktur für Unternehmen jeder Größe — deutschlandweit.",
   openGraph: {
-    title: "Nexa Solutions",
+    title: "Epos Solutions",
     description:
-      "Webdesign, KI-Automatisierung und IT-Consulting — präzise umgesetzt für Unternehmen in ganz Deutschland.",
+      "Epos Solutions entwickelt professionelle Websites, KI-Automatisierungen und digitale Infrastruktur für Unternehmen jeder Größe — deutschlandweit.",
     locale: "de_DE",
     type: "website",
   },
   icons: {
     icon: "/icon.png",
-    shortcut: "/favicon.ico",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
 };
 

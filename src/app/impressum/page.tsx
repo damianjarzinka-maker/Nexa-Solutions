@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LegalLayout } from "@/components/LegalLayout";
 
 export const metadata: Metadata = {
-  title: "Impressum — Nexa Solutions",
+  title: "Impressum — Epos Solutions",
 };
 
 export default function ImpressumPage() {
@@ -13,7 +13,7 @@ export default function ImpressumPage() {
           Angaben gemäß § 5 DDG
         </h2>
         <p className="mt-4">
-          NEXA Solutions
+          Epos Solutions
           <br />
           Damian Jarzinka
           <br />
@@ -28,7 +28,7 @@ export default function ImpressumPage() {
         <p className="mt-4">
           Telefon: [Telefonnummer]
           <br />
-          E-Mail: info@nexa-solutions.de
+          E-Mail: info@epos-solutions.de
         </p>
       </section>
 

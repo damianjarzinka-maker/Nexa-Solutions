@@ -203,7 +203,7 @@ function ServiceCard({
   );
 }
 
-export function NexaLeistungen() {
+export function EposLeistungen() {
   return (
     <section id="websites" className="border-b border-line bg-[#0a0a0a]">
       <div className="mx-auto max-w-6xl px-6 py-28 md:py-36">
