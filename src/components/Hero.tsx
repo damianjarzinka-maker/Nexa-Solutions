@@ -116,7 +116,7 @@ export function Hero() {
             className="relative z-10 flex items-center justify-center"
           >
             <Image
-              src="/nexa-logo-beige-transparent.png"
+              src="/epos-solutions-final-transparent.png"
               alt="Epos Solutions"
               width={520}
               height={200}
