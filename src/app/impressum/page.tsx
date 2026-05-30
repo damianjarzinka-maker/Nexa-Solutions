@@ -10,26 +10,24 @@ export default function ImpressumPage() {
     <LegalLayout title="Impressum">
       <section>
         <h2 className="font-serif text-xl tracking-tight text-white">
-          Angaben gemäß § 5 DDG
+          Angaben gemäß § 5 TMG
         </h2>
         <p className="mt-4">
-          Epos Solutions
-          <br />
           Damian Jarzinka
           <br />
-          [Straße und Hausnummer]
+          handelnd unter „EPOS Solutions“
           <br />
-          [PLZ] Essen
+          Pookweg 70a
+          <br />
+          45147 Essen
+          <br />
+          Deutschland
         </p>
       </section>
 
       <section>
         <h2 className="font-serif text-xl tracking-tight text-white">Kontakt</h2>
-        <p className="mt-4">
-          Telefon: [Telefonnummer]
-          <br />
-          E-Mail: info@epos-solutions.de
-        </p>
+        <p className="mt-4">E-Mail: damian.jarzinka@gmail.com</p>
       </section>
 
       <section>
@@ -37,11 +35,13 @@ export default function ImpressumPage() {
           Umsatzsteuer-ID
         </h2>
         <p className="mt-4">
-          Gemäß § 19 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer
-          berechnet.
-          <br />
-          USt-IdNr. (nur für EU-Geschäfte / Reverse Charge): DE461543310
+          Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: DE461543310
         </p>
+      </section>
+
+      <section>
+        <h2 className="font-serif text-xl tracking-tight text-white">Hinweis</h2>
+        <p className="mt-4">Einzelunternehmen</p>
       </section>
     </LegalLayout>
   );
