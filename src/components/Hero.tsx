@@ -121,7 +121,7 @@ export function Hero() {
               width={520}
               height={200}
               priority
-              className="h-auto w-[180px] md:w-[220px] lg:w-[240px] xl:w-[300px]"
+              className="h-auto w-[280px] md:w-[340px] lg:w-[380px] xl:w-[460px]"
             />
           </motion.div>
         </div>
