@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, DM_Serif_Display, Cormorant_Garamond } from "next/font/google";
+import { DM_Sans, DM_Serif_Display, Cormorant_Garamond, Geist } from "next/font/google";
 import { NoiseOverlay } from "@/components/NoiseOverlay";
 import "./globals.css";
 
@@ -21,6 +21,13 @@ const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-cormorant",
+  display: "swap",
+});
+
+const geist = Geist({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-geist",
   display: "swap",
 });
 
@@ -48,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="de" className={`${dmSans.variable} ${dmSerif.variable} ${cormorant.variable}`}>
+    <html lang="de" className={`${dmSans.variable} ${dmSerif.variable} ${cormorant.variable} ${geist.variable}`}>
       <body className="bg-bg font-sans text-white antialiased">
         {children}
         <NoiseOverlay />

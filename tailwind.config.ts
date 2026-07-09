@@ -16,6 +16,7 @@ const config: Config = {
         serif: ["var(--font-serif)", "serif"],
         sans: ["var(--font-sans)", "sans-serif"],
         cormorant: ["var(--font-cormorant)", "serif"],
+        geist: ["var(--font-geist)", "sans-serif"],
       },
       keyframes: {
         fadeUp: {
