@@ -7,10 +7,9 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { ShinyButton } from "@/components/ui/shiny-button";
 
+// Only anchors that actually exist on the current page — Leistungen/Websites/
+// Über-uns return here when their (archived) sections are re-mounted.
 const NAV_LINKS = [
-  { href: "/#leistungen", label: "Leistungen" },
-  { href: "/#websites", label: "Websites" },
-  { href: "/#ueber-uns", label: "Über uns" },
   { href: "/#kontakt", label: "Kontakt" },
 ];
 
@@ -54,7 +53,15 @@ export function Navbar() {
         <Link
           href="/"
           aria-label="Epos Solutions"
-          onClick={() => setOpen(false)}
+          onClick={(e) => {
+            setOpen(false);
+            // Already on the homepage — smooth-scroll back up to the hero
+            // instead of a hard navigation/reload.
+            if (window.location.pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
           className="inline-flex items-center"
         >
           <Image

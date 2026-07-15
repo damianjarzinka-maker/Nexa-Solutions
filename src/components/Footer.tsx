@@ -1,8 +1,8 @@
 import Image from "next/image";
 
+// Only anchors that actually exist on the current page — Leistungen/Über-uns
+// return here when their (archived) sections are re-mounted.
 const NAV = [
-  { href: "#leistungen", label: "Leistungen" },
-  { href: "#ueber-uns", label: "Über uns" },
   { href: "#kontakt", label: "Kontakt" },
 ];
 

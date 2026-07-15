@@ -17,6 +17,8 @@ const config: Config = {
         sans: ["var(--font-sans)", "sans-serif"],
         cormorant: ["var(--font-cormorant)", "serif"],
         geist: ["var(--font-geist)", "sans-serif"],
+        instrument: ["var(--font-instrument)", "serif"],
+        dirtyline: ["var(--font-dirtyline)", "sans-serif"],
       },
       keyframes: {
         fadeUp: {

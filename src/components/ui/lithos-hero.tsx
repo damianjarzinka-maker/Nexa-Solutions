@@ -147,8 +147,6 @@ export function LithosHero() {
     };
   }, []);
 
-  const anim = (cls: string, delay: string) =>
-    inView ? { className: cls, style: { animationDelay: delay } } : {};
 
   return (
     <div

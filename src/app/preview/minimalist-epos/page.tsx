@@ -16,7 +16,7 @@ export default function MinimalistHeroEposPreviewPage() {
       href: "https://www.linkedin.com/in/damian-jarzinka-7a7a7b348/",
     },
     { icon: Instagram, href: "#" },
-    { icon: Mail, href: "mailto:hallo@epos-solutions.de" },
+    { icon: Mail, href: "mailto:hallo@epossolutions.de" },
   ];
 
   return (

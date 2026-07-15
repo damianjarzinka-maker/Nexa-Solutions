@@ -17,7 +17,9 @@ export function FadeIn({ children, delay = 0, className }: FadeInProps) {
     const node = ref.current;
     if (!node) return;
     if (typeof IntersectionObserver === "undefined") {
-      setVisible(true);
+      // No observer support: reveal immediately via the DOM (not setState —
+      // keeps SSR/client renders identical and avoids a cascading render).
+      node.classList.add("visible");
       return;
     }
     const observer = new IntersectionObserver(

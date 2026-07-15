@@ -1,9 +1,10 @@
 "use client";
 
 /**
- * BallHero — full-screen cinematic hero: looping background video, Garamond
- * display headline with per-character staggered fade, Geist body copy and a
- * liquid-glass CTA. EPOS content in place of the template copy.
+ * BallHero — full-screen cinematic hero: background video (plays once, then
+ * freezes on its last frame), Garamond display headline with per-character
+ * staggered fade, Geist body copy and a liquid-glass CTA. EPOS content in
+ * place of the template copy.
  *
  * Sits inside BallHeroReveal (pinned; grey overlay + zoom slide over it), so
  * this section only renders the hero itself — nav comes from the global Navbar.
@@ -62,6 +63,7 @@ export function BallHero() {
         autoPlay
         muted
         playsInline
+        preload="auto"
         aria-hidden
       />
 

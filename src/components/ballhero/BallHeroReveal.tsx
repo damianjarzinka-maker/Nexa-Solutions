@@ -22,7 +22,13 @@
  * Scroll-bound throughout; Framer Motion tears down the scroll listener on unmount.
  */
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { BallHero } from "./BallHero";
 
 export function BallHeroReveal() {
@@ -63,12 +69,16 @@ export function BallHeroReveal() {
   });
 
   // Spring-smoothed progress: wheel ticks land softly instead of jumping the
-  // animation, making the whole reveal→zoom feel fluid.
-  const progress = useSpring(scrollYProgress, {
+  // animation, making the whole reveal→zoom feel fluid. With
+  // prefers-reduced-motion the spring is bypassed: the reveal/zoom track the
+  // scrollbar 1:1, no inertia.
+  const reducedMotion = useReducedMotion();
+  const springProgress = useSpring(scrollYProgress, {
     stiffness: 90,
     damping: 26,
     restDelta: 0.0001,
   });
+  const progress = reducedMotion ? scrollYProgress : springProgress;
 
   // Phase 1 — reveal
   const overlayY = useTransform(progress, [0, 0.3], ["100%", "0%"]);
