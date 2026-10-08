@@ -7,9 +7,8 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        // Orphan design-preview routes and the contact API have no business
-        // in a search index.
-        disallow: ["/preview/", "/api/"],
+        // The contact API has no business in a search index.
+        disallow: ["/api/"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

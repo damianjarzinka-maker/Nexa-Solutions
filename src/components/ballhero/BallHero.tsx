@@ -93,8 +93,9 @@ export function BallHero() {
           transition={{ duration: 0.8, delay: 1.6 }}
           className="mb-8 max-w-xs text-sm font-light leading-relaxed text-white/70 sm:mb-10 sm:max-w-md sm:text-base md:text-lg"
         >
-          Digitale Agentur für Webdesign, KI-Automatisierung
-          <br className="hidden sm:block" /> und IT-Consulting — aus einer Hand.
+          Digitale Agentur für Websites, Automatisierung,
+          <br className="hidden sm:block" /> individuelle Software und
+          KI-Lösungen — aus einer Hand.
         </motion.p>
 
         <motion.button

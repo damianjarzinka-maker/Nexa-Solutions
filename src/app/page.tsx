@@ -10,12 +10,7 @@ import { Statement } from "@/components/Statement";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { ImageComparison } from "@/components/ui/image-comparison-slider";
-
-// --- ARCHIVED (temporarily removed, re-enable by uncommenting here + below) ---
-// import { Services } from "@/components/Services"; // images now live inside ScrollTextReveal
-// import { EposLeistungen } from "@/components/EposLeistungen";
-// import { About } from "@/components/About";
-// import { LithosHero } from "@/components/ui/lithos-hero";
+import { LazyVideo } from "@/components/ui/lazy-video";
 
 export default function Home() {
   return (
@@ -50,13 +45,8 @@ export default function Home() {
             altBefore="AVS Brinkmann GmbH — alte Website"
             after={
               <>
-                <video
+                <LazyVideo
                   src="/avs-brinkmann-hero.mp4"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  aria-hidden
                   className="absolute inset-x-0 top-[9.524%] h-[90.765%] w-full object-cover object-[64%_50%] md:top-[8.125%] md:h-[92%] md:object-center"
                 />
                 <picture>
@@ -67,6 +57,8 @@ export default function Home() {
                   <img
                     src="/avs-brinkmann-overlay.png"
                     alt="AVS Brinkmann GmbH — neue Website"
+                    loading="lazy"
+                    decoding="async"
                     className="absolute inset-0 h-full w-full"
                     draggable="false"
                   />
@@ -104,13 +96,6 @@ export default function Home() {
           page in Germany). */}
       <Contact />
       <Footer />
-
-      {/* --- ARCHIVED sections (kept for later; components still on disk) ---
-      <Statement />
-      <EposLeistungen />
-      <About />
-      <LithosHero />
-      */}
     </main>
   );
 }

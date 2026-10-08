@@ -30,8 +30,8 @@ export function Footer() {
               className="h-10 w-auto"
             />
             <p className="mt-4 max-w-xs text-sm text-muted">
-              Studio für Webdesign, KI-Automatisierung und IT-Consulting —
-              Deutschland.
+              Studio für Websites, Automatisierung, individuelle Software und
+              KI-Lösungen — Deutschland.
             </p>
           </div>
           <div>

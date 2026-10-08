@@ -17,6 +17,38 @@ import "./globals.css";
 // robots.ts and sitemap.ts.
 export const SITE_URL = "https://epossolutions.de";
 
+const SITE_DESCRIPTION =
+  "Epos Solutions entwickelt Websites, Automatisierungen, individuelle Software und KI-Lösungen für kleine und mittlere Unternehmen — aus Essen, deutschlandweit.";
+
+// Structured data for Google (business identity). NAP mirrors the Impressum —
+// keep both in sync. No phone number on purpose: there is no business line.
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Epos Solutions",
+  url: SITE_URL,
+  logo: `${SITE_URL}/epos-logo.png`,
+  image: `${SITE_URL}/opengraph-image`,
+  description: SITE_DESCRIPTION,
+  email: "damian.jarzinka@gmail.com",
+  founder: { "@type": "Person", name: "Damian Jarzinka" },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Pookweg 70a",
+    postalCode: "45147",
+    addressLocality: "Essen",
+    addressRegion: "NRW",
+    addressCountry: "DE",
+  },
+  areaServed: { "@type": "Country", name: "Deutschland" },
+  knowsAbout: [
+    "Websites",
+    "Automatisierung",
+    "Individuelle Software",
+    "KI-Lösungen",
+  ],
+};
+
 const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
@@ -75,30 +107,20 @@ const dirtyline = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Epos Solutions — Webdesign & KI-Automatisierung",
-  description:
-    "Epos Solutions entwickelt professionelle Websites, KI-Automatisierungen und digitale Infrastruktur für Unternehmen jeder Größe — deutschlandweit.",
+  title: "Epos Solutions — Websites, Automatisierung & KI-Lösungen",
+  description: SITE_DESCRIPTION,
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Epos Solutions",
-    description:
-      "Epos Solutions entwickelt professionelle Websites, KI-Automatisierungen und digitale Infrastruktur für Unternehmen jeder Größe — deutschlandweit.",
+    title: "Epos Solutions — Websites, Automatisierung & KI-Lösungen",
+    description: SITE_DESCRIPTION,
     url: "/",
     siteName: "Epos Solutions",
     locale: "de_DE",
     type: "website",
-    // TODO: replace with a dedicated 1200×630 OG image; the logo works but
-    // its 2.85:1 ratio gets cropped on some platforms.
-    images: [
-      {
-        url: "/epos-logo.png",
-        width: 2400,
-        height: 842,
-        alt: "Epos Solutions",
-      },
-    ],
+    // og:image / twitter:image come from app/opengraph-image.tsx and
+    // app/twitter-image.tsx (Next file conventions).
   },
   twitter: {
     card: "summary_large_image",
@@ -123,6 +145,11 @@ export default function RootLayout({
   return (
     <html lang="de" className={`${dmSans.variable} ${dmSerif.variable} ${cormorant.variable} ${geist.variable} ${instrument.variable} ${playfair.variable} ${dirtyline.variable}`}>
       <body className="bg-bg font-sans text-white antialiased">
+        <script
+          type="application/ld+json"
+          // Static object defined above — no user input reaches this.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+        />
         <SmoothScroll />
         <AnchorScroll />
         {children}

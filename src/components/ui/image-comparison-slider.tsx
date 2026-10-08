@@ -100,10 +100,11 @@ export const ImageComparison = ({
           {beforeImageMobile && (
             <source media={MOBILE_MEDIA} srcSet={beforeImageMobile} />
           )}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={beforeImage}
             alt={altBefore}
+            loading="lazy"
+            decoding="async"
             className="h-full w-full object-cover object-left-top"
             draggable="false"
           />
