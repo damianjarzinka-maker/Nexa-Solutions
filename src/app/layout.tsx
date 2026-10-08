@@ -10,7 +10,6 @@ import {
 import localFont from "next/font/local";
 import { AnchorScroll } from "@/components/AnchorScroll";
 import { NoiseOverlay } from "@/components/NoiseOverlay";
-import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
 // Canonical production origin — single source of truth for metadata,
@@ -150,7 +149,6 @@ export default function RootLayout({
           // Static object defined above — no user input reaches this.
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
         />
-        <SmoothScroll />
         <AnchorScroll />
         {children}
         <NoiseOverlay />

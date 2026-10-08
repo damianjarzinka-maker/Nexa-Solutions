@@ -3,6 +3,11 @@ import { LegalLayout } from "@/components/LegalLayout";
 
 export const metadata: Metadata = {
   title: "AGB — Epos Solutions",
+  description:
+    "Allgemeine Geschäftsbedingungen von Epos Solutions für Websites, Automatisierung, individuelle Software und KI-Lösungen.",
+  // Own canonical — otherwise the root layout's "/" is inherited and Google
+  // treats this page as a duplicate of the homepage.
+  alternates: { canonical: "/agb" },
 };
 
 export default function AGBPage() {

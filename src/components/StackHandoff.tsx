@@ -11,6 +11,11 @@
  * "stick by the bottom edge" for elements taller than the viewport.
  * Requires no `overflow: hidden/auto` ancestor (that would break sticky).
  * data-stack-* attributes let lib/section-scroll measure natural positions.
+ *
+ * Phones/tablets: no scale (re-rastering a several-thousand-px layer every
+ * frame is what makes mobile GPUs stutter) — the veil alone carries the depth.
+ * The sticky offset ignores height-only viewport changes, which mobile
+ * browsers fire constantly while the address bar slides in/out mid-scroll.
  */
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
@@ -19,6 +24,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-is-mobile";
 
 export function StackHandoff({
   under,
@@ -31,6 +37,9 @@ export function StackHandoff({
   const overRef = useRef<HTMLDivElement>(null);
   const [stickyTop, setStickyTop] = useState(0);
   const reducedMotion = useReducedMotion();
+  // null until known (SSR) → no scale until we know it's a desktop.
+  const isTouchOrSmall = useIsMobile("(max-width: 1023px), (pointer: coarse)");
+  const allowScale = !reducedMotion && isTouchOrSmall === false;
 
   useEffect(() => {
     const node = underRef.current;
@@ -38,12 +47,21 @@ export function StackHandoff({
     const update = () =>
       setStickyTop(Math.min(0, window.innerHeight - node.offsetHeight));
     update();
+    // `under` itself resizing (content, fonts, breakpoints) → re-measure.
     const ro = new ResizeObserver(update);
     ro.observe(node);
-    window.addEventListener("resize", update);
+    // Viewport: only react to width changes; height-only resizes are the
+    // mobile address bar and would make the pinned section jump.
+    let lastWidth = window.innerWidth;
+    const onResize = () => {
+      if (window.innerWidth === lastWidth) return;
+      lastWidth = window.innerWidth;
+      update();
+    };
+    window.addEventListener("resize", onResize);
     return () => {
       ro.disconnect();
-      window.removeEventListener("resize", update);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 
@@ -66,7 +84,7 @@ export function StackHandoff({
         <motion.div
           data-stack-scale
           className="origin-bottom"
-          style={{ scale: reducedMotion ? 1 : scale }}
+          style={{ scale: allowScale ? scale : 1 }}
         >
           {under}
         </motion.div>

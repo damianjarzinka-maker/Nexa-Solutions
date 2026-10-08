@@ -9,14 +9,6 @@
  * before the browser paints (no visible flash).
  */
 
-type LenisLike = { scrollTo: (target: number) => void };
-
-declare global {
-  interface Window {
-    __lenis?: LenisLike;
-  }
-}
-
 export function naturalTop(el: HTMLElement): number {
   const stickies = Array.from(
     document.querySelectorAll<HTMLElement>("[data-stack-sticky]"),
@@ -54,8 +46,7 @@ export function scrollToSection(
   // on <body> before we scroll.
   requestAnimationFrame(() =>
     requestAnimationFrame(() => {
-      if (window.__lenis && behavior === "smooth") window.__lenis.scrollTo(top);
-      else window.scrollTo({ top, behavior });
+      window.scrollTo({ top, behavior });
     }),
   );
   return true;

@@ -3,6 +3,11 @@ import { LegalLayout } from "@/components/LegalLayout";
 
 export const metadata: Metadata = {
   title: "Datenschutzerklärung — Epos Solutions",
+  description:
+    "Datenschutzerklärung von Epos Solutions: welche Daten beim Besuch der Website und bei Anfragen verarbeitet werden und welche Rechte Sie haben.",
+  // Own canonical — otherwise the root layout's "/" is inherited and Google
+  // treats this page as a duplicate of the homepage.
+  alternates: { canonical: "/datenschutz" },
 };
 
 export default function DatenschutzPage() {
@@ -93,6 +98,12 @@ export default function DatenschutzPage() {
           Bearbeitung der Anfrage gespeichert. Rechtsgrundlage: Art. 6 Abs. 1
           lit. b DSGVO.
         </p>
+        <p className="mt-4">
+          Unser E-Mail-Postfach wird beim Anbieter Google (Gmail) geführt.
+          E-Mails und Anfragen aus dem Kontaktformular werden daher auch auf
+          Servern von Google verarbeitet, die sich außerhalb der EU befinden
+          können.
+        </p>
       </section>
 
       <section>
@@ -126,7 +137,23 @@ export default function DatenschutzPage() {
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight text-white">
-          8. Keine Cookies oder Tracking
+          8. Übermittlung in Drittländer
+        </h2>
+        <p className="mt-4">
+          Einige der genannten Dienstleister (Vercel, Resend, Google, Spline,
+          Unicorn Studio) können personenbezogene Daten auch in Ländern
+          außerhalb der EU, insbesondere in den USA, verarbeiten. Eine solche
+          Übermittlung erfolgt auf Grundlage des Angemessenheitsbeschlusses der
+          EU-Kommission zum EU-US Data Privacy Framework (Art. 45 DSGVO),
+          soweit der jeweilige Anbieter danach zertifiziert ist, andernfalls auf
+          Grundlage von Standardvertragsklauseln der EU-Kommission (Art. 46
+          Abs. 2 lit. c DSGVO).
+        </p>
+      </section>
+
+      <section>
+        <h2 className="font-serif text-2xl tracking-tight text-white">
+          9. Keine Cookies oder Tracking
         </h2>
         <p className="mt-4">
           Diese Website verwendet keine Cookies zu Analyse-, Tracking- oder
@@ -137,7 +164,7 @@ export default function DatenschutzPage() {
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight text-white">
-          9. Rechtsgrundlagen
+          10. Rechtsgrundlagen
         </h2>
         <p className="mt-4">
           Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b
@@ -147,7 +174,7 @@ export default function DatenschutzPage() {
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight text-white">
-          10. Speicherdauer
+          11. Speicherdauer
         </h2>
         <p className="mt-4">
           Personenbezogene Daten werden nur so lange gespeichert, wie zur
@@ -158,7 +185,7 @@ export default function DatenschutzPage() {
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight text-white">
-          11. Ihre Rechte
+          12. Ihre Rechte
         </h2>
         <p className="mt-4">
           Sie haben das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16),
@@ -169,7 +196,25 @@ export default function DatenschutzPage() {
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight text-white">
-          12. Widerruf
+          13. Widerspruchsrecht (Art. 21 DSGVO)
+        </h2>
+        <p className="mt-4">
+          Soweit wir Ihre Daten auf Grundlage berechtigter Interessen
+          verarbeiten (Art. 6 Abs. 1 lit. f DSGVO) – etwa bei den
+          Server-Logfiles oder den externen Inhalten für 3D-Animationen –,
+          haben Sie das Recht, aus Gründen, die sich aus Ihrer besonderen
+          Situation ergeben, jederzeit Widerspruch gegen diese Verarbeitung
+          einzulegen. Wir verarbeiten die Daten dann nicht mehr, es sei denn,
+          wir können zwingende schutzwürdige Gründe nachweisen, die Ihre
+          Interessen überwiegen, oder die Verarbeitung dient der Geltendmachung,
+          Ausübung oder Verteidigung von Rechtsansprüchen. Ein formloser
+          Hinweis an die oben genannte E-Mail-Adresse genügt.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="font-serif text-2xl tracking-tight text-white">
+          14. Widerruf
         </h2>
         <p className="mt-4">
           Sie können eine erteilte Einwilligung jederzeit widerrufen.
@@ -178,7 +223,7 @@ export default function DatenschutzPage() {
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight text-white">
-          13. Beschwerderecht
+          15. Beschwerderecht
         </h2>
         <p className="mt-4">
           Im Falle datenschutzrechtlicher Verstöße steht Ihnen ein
@@ -188,7 +233,7 @@ export default function DatenschutzPage() {
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight text-white">
-          14. SSL-/TLS-Verschlüsselung
+          16. SSL-/TLS-Verschlüsselung
         </h2>
         <p className="mt-4">
           Diese Website nutzt SSL- bzw. TLS-Verschlüsselung. Eine
@@ -196,6 +241,8 @@ export default function DatenschutzPage() {
           Adresszeile.
         </p>
       </section>
+
+      <p className="text-sm">Stand: Oktober 2026</p>
     </LegalLayout>
   );
 }

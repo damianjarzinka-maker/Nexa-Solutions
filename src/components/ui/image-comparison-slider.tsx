@@ -78,9 +78,9 @@ export const ImageComparison = ({
   return (
     <div
       ref={containerRef}
-      // Opt out of Lenis so the horizontal drag isn't swallowed by smooth scroll.
-      data-lenis-prevent
-      className="relative mx-auto w-full max-w-4xl select-none overflow-hidden rounded-xl shadow-2xl"
+      data-compare-slider
+      // Vertical swipes on the image scroll the page; only the handle drags.
+      className="relative mx-auto w-full max-w-4xl touch-pan-y select-none overflow-hidden rounded-xl shadow-2xl"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseUp} // Stop dragging if mouse leaves the container
       onTouchMove={handleTouchMove}
@@ -111,7 +111,9 @@ export const ImageComparison = ({
         </picture>
       </div>
 
-      {/* Slider Handle */}
+      {/* Slider Handle. The thin line inherits pan-y (vertical swipes still
+          scroll the page, horizontal drags reach the handlers); only the
+          round knob blocks scrolling for a precise grab. */}
       <div
         className="absolute bottom-0 top-0 flex w-1.5 cursor-ew-resize items-center justify-center bg-white/80"
         style={{ left: `calc(${sliderPosition}% - 0.375rem)` }} // Center the handle on the line
@@ -119,7 +121,7 @@ export const ImageComparison = ({
         onTouchStart={handleTouchStart}
       >
         <div
-          className={`flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md transition-all duration-200 ease-in-out ${isDragging ? "scale-110 shadow-xl" : ""}`}
+          className={`flex h-12 w-12 touch-none items-center justify-center rounded-full bg-white shadow-md transition-all duration-200 ease-in-out ${isDragging ? "scale-110 shadow-xl" : ""}`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

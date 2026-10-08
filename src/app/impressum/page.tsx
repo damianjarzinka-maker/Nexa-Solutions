@@ -3,6 +3,11 @@ import { LegalLayout } from "@/components/LegalLayout";
 
 export const metadata: Metadata = {
   title: "Impressum — Epos Solutions",
+  description:
+    "Impressum von Epos Solutions (Damian Jarzinka), Pookweg 70a, 45147 Essen — Angaben gemäß § 5 DDG.",
+  // Own canonical — otherwise the root layout's "/" is inherited and Google
+  // treats this page as a duplicate of the homepage.
+  alternates: { canonical: "/impressum" },
 };
 
 export default function ImpressumPage() {
@@ -10,7 +15,7 @@ export default function ImpressumPage() {
     <LegalLayout title="Impressum">
       <section>
         <h2 className="font-serif text-xl tracking-tight text-white">
-          Angaben gemäß § 5 TMG
+          Angaben gemäß § 5 DDG
         </h2>
         <p className="mt-4">
           Damian Jarzinka

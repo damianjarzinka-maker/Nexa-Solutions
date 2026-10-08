@@ -6,8 +6,8 @@ import { cn } from "@/lib/cn";
 import { FadeIn } from "./FadeIn";
 import { DotLoader } from "./ui/dot-loader";
 
-// Mirrors the homepage sections (and navbar). Free text on the API side —
-// it only lands in the notification mail.
+// Mirrors the homepage sections (and navbar). The API only accepts these
+// values — keep in sync with SERVICES in app/api/contact/route.ts.
 const SERVICES = [
   "Website",
   "Automatisierung",
@@ -35,7 +35,7 @@ const LOADER_FRAMES = [
   [14, 6, 13, 20, 9, 7, 21],
 ];
 
-type Status = "idle" | "submitting" | "success" | "error";
+type Status = "idle" | "submitting" | "success" | "error" | "rate_limited";
 
 export function Contact() {
   const [name, setName] = useState("");
@@ -44,6 +44,8 @@ export function Contact() {
   const [service, setService] = useState<Service>("Website");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<Status>("idle");
+  // Honeypot — hidden from people, filled by naive bots; the API drops those.
+  const [website, setWebsite] = useState("");
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -52,8 +54,19 @@ export function Contact() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, company, email, service, message }),
+        body: JSON.stringify({
+          name,
+          company,
+          email,
+          service,
+          message,
+          website,
+        }),
       });
+      if (res.status === 429) {
+        setStatus("rate_limited");
+        return;
+      }
       if (!res.ok) throw new Error("Request failed");
       setStatus("success");
     } catch {
@@ -129,12 +142,14 @@ export function Contact() {
                   value={name}
                   onChange={setName}
                   autoComplete="name"
+                  maxLength={100}
                 />
                 <Field
                   label="Unternehmen"
                   value={company}
                   onChange={setCompany}
                   autoComplete="organization"
+                  maxLength={150}
                   className="md:border-l border-line"
                 />
                 <Field
@@ -144,6 +159,7 @@ export function Contact() {
                   value={email}
                   onChange={setEmail}
                   autoComplete="email"
+                  maxLength={254}
                   className="md:col-span-2 border-t border-line"
                 />
 
@@ -185,9 +201,25 @@ export function Contact() {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     rows={5}
+                    maxLength={5000}
                     placeholder="Worum geht es?"
                     className="mt-4 w-full resize-none border-b border-line bg-transparent py-3 text-base outline-none transition-colors placeholder:text-white/30 focus:border-accent"
                   />
+                </div>
+
+                {/* Honeypot: off-screen, skipped by keyboard and screen readers. */}
+                <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+                  <label>
+                    Website
+                    <input
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                    />
+                  </label>
                 </div>
 
                 <div className="flex flex-col items-start gap-4 border-t border-line p-6 md:col-span-2 md:flex-row md:items-center md:justify-between md:p-8">
@@ -195,10 +227,22 @@ export function Contact() {
                     <p className="text-sm text-white">
                       Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.
                     </p>
+                  ) : status === "rate_limited" ? (
+                    <p className="text-sm text-white">
+                      Zu viele Anfragen in kurzer Zeit. Bitte versuchen Sie es
+                      später erneut.
+                    </p>
                   ) : (
                     <p className="text-xs text-muted">
-                      Mit dem Absenden stimmen Sie der Verarbeitung Ihrer
-                      Angaben zur Beantwortung Ihrer Anfrage zu.
+                      Ihre Angaben verwenden wir ausschließlich zur Bearbeitung
+                      Ihrer Anfrage. Mehr dazu in der{" "}
+                      <a
+                        href="/datenschutz"
+                        className="text-white underline underline-offset-4 transition-colors hover:text-accent"
+                      >
+                        Datenschutzerklärung
+                      </a>
+                      .
                     </p>
                   )}
                   <button
@@ -226,6 +270,7 @@ type FieldProps = {
   type?: string;
   required?: boolean;
   autoComplete?: string;
+  maxLength?: number;
   className?: string;
 };
 
@@ -236,6 +281,7 @@ function Field({
   type = "text",
   required,
   autoComplete,
+  maxLength,
   className,
 }: FieldProps) {
   return (
@@ -250,6 +296,7 @@ function Field({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         autoComplete={autoComplete}
+        maxLength={maxLength}
         className="mt-4 w-full border-b border-line bg-transparent py-2 text-base outline-none transition-colors focus:border-accent"
       />
     </div>
