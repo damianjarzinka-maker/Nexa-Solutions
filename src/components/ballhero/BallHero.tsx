@@ -91,7 +91,7 @@ export function BallHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.6 }}
-          className="mb-8 max-w-xs text-sm font-light leading-relaxed text-white/70 sm:mb-10 sm:max-w-md sm:text-base md:text-lg"
+          className="mb-8 max-w-xs text-sm font-light leading-relaxed text-white/70 sm:mb-10 sm:max-w-lg sm:text-base md:max-w-xl md:text-lg"
         >
           Digitale Agentur für Websites, Automatisierung,
           <br className="hidden sm:block" /> individuelle Software und
