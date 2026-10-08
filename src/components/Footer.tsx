@@ -3,7 +3,11 @@ import Image from "next/image";
 // Only anchors that actually exist on the current page — Leistungen/Über-uns
 // return here when their (archived) sections are re-mounted.
 const NAV = [
-  { href: "#kontakt", label: "Kontakt" },
+  { href: "/#websites", label: "Websites" },
+  { href: "/#automatisierung", label: "Automatisierung" },
+  { href: "/#software", label: "Individuelle Software" },
+  { href: "/#ki-loesungen", label: "KI-Lösungen" },
+  { href: "/#kontakt", label: "Kontakt" },
 ];
 
 const LEGAL = [
@@ -19,10 +23,11 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
           <div>
             <Image
-              src="/epos-solutions-final-transparent.png"
+              src="/epos-logo-white.png"
               alt="Epos Solutions"
-              width={120}
-              height={80}
+              width={2400}
+              height={842}
+              className="h-10 w-auto"
             />
             <p className="mt-4 max-w-xs text-sm text-muted">
               Studio für Webdesign, KI-Automatisierung und IT-Consulting —

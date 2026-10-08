@@ -297,7 +297,12 @@ export function ScrollTextReveal() {
       >
         {/* Faint interactive 3D robot behind the text, pinned left, drifting up.
             h-[160%] keeps the canvas bottom — where Spline bakes its watermark —
-            below the clip edge across the entire parallax range. */}
+            below the clip edge across the entire parallax range. Desktop only:
+            phones drop the robot entirely (no WebGL, no static frame) so the
+            text stands alone on a clean background. isMobile === null (SSR +
+            first client render) also skips it — avoids a flash before the
+            media query resolves. */}
+        {isMobile === false && (
         <motion.div
           style={{
             y: robotY,
@@ -311,34 +316,16 @@ export function ScrollTextReveal() {
             WebkitMaskImage:
               "linear-gradient(to top, transparent 0%, transparent 12%, black 30%, black 100%)",
           }}
-          className={`pointer-events-none absolute -top-[10%] left-0 z-0 h-[160%] w-full ${
-            // Shifts the robot's native violet to a soft baby blue matching the
-            // keyword accent. The static mobile frame was captured WITH this
-            // same filter baked in — applying it again would double-shift.
-            isMobile === true
-              ? ""
-              : "[filter:hue-rotate(-60deg)_saturate(1.15)_brightness(1.08)]"
-          }`}
+          // Shifts the robot's native violet to a soft baby blue matching the
+          // keyword accent.
+          className="pointer-events-none absolute -top-[10%] left-0 z-0 h-[160%] w-full [filter:hue-rotate(-60deg)_saturate(1.15)_brightness(1.08)]"
         >
-          {/* Tri-state: while isMobile is still null (SSR + first client
-              render) mount neither branch — phones must never pay for the
-              Spline chunk/WebGL context they'd immediately throw away. */}
-          {isMobile === true && (
-            // Static pre-rendered frame of the same scene — no WebGL cost.
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src="/robot-static.png"
-              alt=""
-              className="h-full w-full object-cover"
-            />
-          )}
-          {isMobile === false && (
-            <InteractiveRobotSpline
-              scene={ROBOT_SCENE_URL}
-              className="h-full w-full"
-            />
-          )}
+          <InteractiveRobotSpline
+            scene={ROBOT_SCENE_URL}
+            className="h-full w-full"
+          />
         </motion.div>
+        )}
 
         {/* Phase 2 — image collage scrolls up from below, behind the text (z-0). */}
         <motion.div

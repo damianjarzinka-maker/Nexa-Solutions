@@ -6,7 +6,14 @@ import { cn } from "@/lib/cn";
 import { FadeIn } from "./FadeIn";
 import { DotLoader } from "./ui/dot-loader";
 
-const SERVICES = ["Webdesign", "KI-Automatisierung", "IT-Consulting"] as const;
+// Mirrors the homepage sections (and navbar). Free text on the API side —
+// it only lands in the notification mail.
+const SERVICES = [
+  "Website",
+  "Automatisierung",
+  "Individuelle Software",
+  "KI-Lösungen",
+] as const;
 type Service = (typeof SERVICES)[number];
 
 const LOADER_FRAMES = [
@@ -34,7 +41,7 @@ export function Contact() {
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
-  const [service, setService] = useState<Service>("Webdesign");
+  const [service, setService] = useState<Service>("Website");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<Status>("idle");
 
@@ -58,7 +65,7 @@ export function Contact() {
     setName("");
     setCompany("");
     setEmail("");
-    setService("Webdesign");
+    setService("Website");
     setMessage("");
     setStatus("idle");
   }
@@ -93,7 +100,7 @@ export function Contact() {
           <div className="mt-16 border border-line">
             {status === "success" ? (
               <div className="flex flex-col items-start gap-6 p-10 md:p-16">
-                <div className="flex h-12 w-12 items-center justify-center border border-white">
+                <div className="flex h-12 w-12 items-center justify-center border border-accent text-accent">
                   <Check size={20} strokeWidth={1.5} />
                 </div>
                 <h3 className="font-serif text-4xl tracking-tight md:text-5xl">
@@ -144,8 +151,10 @@ export function Contact() {
                   <span className="text-xs uppercase tracking-[0.18em] text-muted">
                     Leistung
                   </span>
-                  <div className="mt-4 grid grid-cols-1 gap-0 border border-line sm:grid-cols-3">
-                    {SERVICES.map((s, i) => {
+                  {/* gap-px over a line-coloured background draws the
+                      dividers for any column count (1 / 2 / 4). */}
+                  <div className="mt-4 grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+                    {SERVICES.map((s) => {
                       const selected = service === s;
                       return (
                         <button
@@ -154,11 +163,9 @@ export function Contact() {
                           onClick={() => setService(s)}
                           className={cn(
                             "px-4 py-3 text-sm transition-colors",
-                            i !== 0 && "sm:border-l border-line",
-                            i !== 0 && "border-t sm:border-t-0",
                             selected
-                              ? "bg-white text-bg"
-                              : "text-muted hover:text-white",
+                              ? "bg-[#3d4de8] text-white"
+                              : "bg-bg text-muted hover:text-white",
                           )}
                           aria-pressed={selected}
                         >
@@ -179,7 +186,7 @@ export function Contact() {
                     onChange={(e) => setMessage(e.target.value)}
                     rows={5}
                     placeholder="Worum geht es?"
-                    className="mt-4 w-full resize-none border-b border-line bg-transparent py-3 text-base outline-none transition-colors placeholder:text-white/30 focus:border-white"
+                    className="mt-4 w-full resize-none border-b border-line bg-transparent py-3 text-base outline-none transition-colors placeholder:text-white/30 focus:border-accent"
                   />
                 </div>
 
@@ -197,7 +204,7 @@ export function Contact() {
                   <button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="inline-flex items-center gap-2 border border-white bg-white px-6 py-3 text-sm font-medium text-bg transition-colors hover:bg-transparent hover:text-white disabled:opacity-60"
+                    className="inline-flex items-center gap-2 border border-[#3d4de8] bg-[#3d4de8] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-transparent hover:text-white disabled:opacity-60"
                   >
                     {status === "submitting" ? "Wird gesendet…" : "Anfrage senden"}
                     <ArrowRight size={16} strokeWidth={1.75} />
@@ -243,7 +250,7 @@ function Field({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         autoComplete={autoComplete}
-        className="mt-4 w-full border-b border-line bg-transparent py-2 text-base outline-none transition-colors focus:border-white"
+        className="mt-4 w-full border-b border-line bg-transparent py-2 text-base outline-none transition-colors focus:border-accent"
       />
     </div>
   );

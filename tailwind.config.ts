@@ -10,7 +10,8 @@ const config: Config = {
         muted: "rgba(255,255,255,0.6)",
         background: "#080808",
         foreground: "#ffffff",
-        accent: "#c8b89a",
+        // Brand blue, lightened for legibility on the dark surfaces.
+        accent: "#8b95ff",
       },
       fontFamily: {
         serif: ["var(--font-serif)", "serif"],

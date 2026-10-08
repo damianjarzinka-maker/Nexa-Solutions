@@ -8,7 +8,9 @@ import {
   Playfair_Display,
 } from "next/font/google";
 import localFont from "next/font/local";
+import { AnchorScroll } from "@/components/AnchorScroll";
 import { NoiseOverlay } from "@/components/NoiseOverlay";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
 // Canonical production origin — single source of truth for metadata,
@@ -121,6 +123,8 @@ export default function RootLayout({
   return (
     <html lang="de" className={`${dmSans.variable} ${dmSerif.variable} ${cormorant.variable} ${geist.variable} ${instrument.variable} ${playfair.variable} ${dirtyline.variable}`}>
       <body className="bg-bg font-sans text-white antialiased">
+        <SmoothScroll />
+        <AnchorScroll />
         {children}
         <NoiseOverlay />
       </body>

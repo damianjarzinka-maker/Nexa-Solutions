@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Lenis smooth scroll (see SmoothScroll.tsx). */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 /* All fonts are self-hosted via next/font in layout.tsx — no external font
    CDNs (render-blocking + leaks visitor IPs, contradicting the Datenschutz
    page's "no third-party services" claim). */
