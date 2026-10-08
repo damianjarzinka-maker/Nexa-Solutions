@@ -76,6 +76,12 @@ export default function DatenschutzPage() {
           ohne Ihre Einwilligung weitergegeben und gelöscht, sobald der Zweck
           der Speicherung entfällt.
         </p>
+        <p className="mt-4">
+          Für die Zustellung der Formularangaben an uns nutzen wir den
+          E-Mail-Versanddienst Resend als technischen Dienstleister. Dabei
+          können Daten auch auf Servern außerhalb der EU (insbesondere in den
+          USA) verarbeitet werden.
+        </p>
       </section>
 
       <section>
@@ -91,7 +97,36 @@ export default function DatenschutzPage() {
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight text-white">
-          7. Keine Cookies oder Tracking
+          7. Externe Inhalte für 3D-Animationen
+        </h2>
+        <p className="mt-4">
+          Auf größeren Bildschirmen binden wir zwei interaktive Animationen
+          ein, deren Dateien von den Servern der jeweiligen Anbieter geladen
+          werden:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-5">
+          <li>
+            Spline (3D-Szene) — geladen über prod.spline.design, unpkg.com und
+            www.gstatic.com
+          </li>
+          <li>
+            Unicorn Studio (animierter Hintergrund) — geladen über
+            cdn.jsdelivr.net, storage.googleapis.com und assets.unicorn.studio
+          </li>
+        </ul>
+        <p className="mt-4">
+          Beim Abruf dieser Inhalte wird technisch bedingt Ihre IP-Adresse an
+          die genannten Server übertragen. Diese können sich auch außerhalb der
+          EU (insbesondere in den USA) befinden. Cookies werden dabei nicht
+          gesetzt. Rechtsgrundlage ist unser berechtigtes Interesse an einer
+          ansprechenden Darstellung unseres Angebots (Art. 6 Abs. 1 lit. f
+          DSGVO). Auf Smartphones werden diese Animationen nicht geladen.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="font-serif text-2xl tracking-tight text-white">
+          8. Keine Cookies oder Tracking
         </h2>
         <p className="mt-4">
           Diese Website verwendet keine Cookies zu Analyse-, Tracking- oder
@@ -102,7 +137,7 @@ export default function DatenschutzPage() {
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight text-white">
-          8. Rechtsgrundlagen
+          9. Rechtsgrundlagen
         </h2>
         <p className="mt-4">
           Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b
@@ -112,7 +147,7 @@ export default function DatenschutzPage() {
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight text-white">
-          9. Speicherdauer
+          10. Speicherdauer
         </h2>
         <p className="mt-4">
           Personenbezogene Daten werden nur so lange gespeichert, wie zur
@@ -123,7 +158,7 @@ export default function DatenschutzPage() {
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight text-white">
-          10. Ihre Rechte
+          11. Ihre Rechte
         </h2>
         <p className="mt-4">
           Sie haben das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16),
@@ -134,7 +169,7 @@ export default function DatenschutzPage() {
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight text-white">
-          11. Widerruf
+          12. Widerruf
         </h2>
         <p className="mt-4">
           Sie können eine erteilte Einwilligung jederzeit widerrufen.
@@ -143,7 +178,7 @@ export default function DatenschutzPage() {
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight text-white">
-          12. Beschwerderecht
+          13. Beschwerderecht
         </h2>
         <p className="mt-4">
           Im Falle datenschutzrechtlicher Verstöße steht Ihnen ein
@@ -153,7 +188,7 @@ export default function DatenschutzPage() {
 
       <section>
         <h2 className="font-serif text-2xl tracking-tight text-white">
-          13. SSL-/TLS-Verschlüsselung
+          14. SSL-/TLS-Verschlüsselung
         </h2>
         <p className="mt-4">
           Diese Website nutzt SSL- bzw. TLS-Verschlüsselung. Eine

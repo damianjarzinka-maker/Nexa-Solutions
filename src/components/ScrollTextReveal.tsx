@@ -28,20 +28,12 @@ const ROBOT_SCENE_URL =
   "https://prod.spline.design/PyzDhpQ9E5f1E3MT/scene.splinecode";
 
 // Background image collage (phase 2): scrolls up behind the still-pinned text.
-const IMAGES = [
-  "https://images.unsplash.com/photo-1727341554370-80e0fe9ad082?q=80&w=2276&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1640680608781-2e4199dd1579?q=80&w=3087&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1726083085160-feeb4e1e5b00?q=80&w=3024&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1562016600-ece13e8ba570?q=80&w=2838&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1624344965199-ed40391d20f2?q=80&w=2960&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1689553079282-45df1b35741b?q=80&w=3087&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1721968317938-cf8c60fccd1a?q=80&w=2728&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1677338354108-223e807fb1bd?q=80&w=3087&auto=format&fit=crop",
-];
-
-// The largest render slot is md:w-40 (160px) — 640w covers 2x DPR with
-// headroom, vs. the 2276–3087px originals the URLs would otherwise fetch.
-const IMAGES_DESKTOP = IMAGES.map((u) => u.replace(/w=\d+/, "w=640"));
+// Self-hosted Unsplash photos (Unsplash licence), pre-sized to 640w — the
+// largest render slot is md:w-40 (160px), so 640w covers 2x DPR with headroom.
+const IMAGES = Array.from(
+  { length: 8 },
+  (_, i) => `/media/collage/${String(i + 1).padStart(2, "0")}.jpg`,
+);
 
 // Clean, non-overlapping scatter; the collage scrolls up as one group.
 const IMG_ITEMS = [
@@ -338,12 +330,11 @@ export function ScrollTextReveal() {
             <div className="absolute left-0 top-0 h-full w-full overflow-hidden">
               {IMG_ITEMS.map((item, i) => (
                 <div key={i} className={`absolute ${item.pos}`}>
-                  {/* Plain <img>: remote Unsplash with hand-tuned w= params;
-                      next/image would need remotePatterns + adds no value for
-                      these fixed-size decorative tiles. */}
+                  {/* Plain <img>: fixed-size decorative tiles, already
+                      pre-sized — next/image adds no value here. */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={IMAGES[item.src].replace(/w=\d+/, "w=480")}
+                    src={IMAGES[item.src]}
                     alt=""
                     loading="lazy"
                     className={`${item.size} object-cover`}
@@ -358,7 +349,7 @@ export function ScrollTextReveal() {
                 <FloatingElement key={i} depth={item.depth} className={item.pos}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={IMAGES_DESKTOP[item.src]}
+                    src={IMAGES[item.src]}
                     alt=""
                     className={`${item.size} object-cover`}
                   />
